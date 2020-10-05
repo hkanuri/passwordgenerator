@@ -6,119 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 
 <body>
-    <script type="text/javascript">
-        // user input variables
-        var enter;
-        var confirmNumber;
-        var confirmCharacter;
-        var confirmUppercase;
-        var confirmLowercase;
-        // spl characters
-        character = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
-        // numbers
-        number = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        // alphabets
-        alpha = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-        space = [];
-        var choice;
-        var toUpper = function (x) {
-            return x.toUpperCase();
-        }
-        alpha2 = alpha.map(toUpper);
-
-        enter = parseInt(prompt("How many chanracters would you like to your password to be? Enteer between 8 and 128"));
-        if (!enter) {
-            prompt("You need to enter a value in order to generate a password");
-        } else if (enter < 8 && enter > 128) {
-            prompt = parseInt(prompt("Your selection must be between 8 and 128"));
-
-        } else {
-            confirmNumber = confirm("Do you want a numbeer in your password?");
-            confirmCharacter = confirm("Do you want a Special Charater in your password?");
-            confirmUppercase = confirm("Do you want a Upper case letter in your password?");
-            confirmLowercase = confirm("Do you want a Lower case letter in your password?");
-        };
-        // if statement if all optios are declined
-        if (!confirmNumber && !confirmCharacter && !confirmUppercase && !confirmLowercase) {
-            var choice = alert("You must select any one of the criteria")
-            // else if user selects all 4 optios and concat them.
-        } else if (confirmNumber && confirmCharacter && confirmUppercase && confirmUppercase) {
-            choice = character.concat(number, alpha, alpha2)
-        }
-        // If user selectss only charactes ,number and uppercase
-        else if (confirmCharacter && confirmNumber && confirmUppercase) {
-            choices = character.concat(number, alpha2); // push the concat to the empty array
-        }
-        //If user selectss only charactes ,number and lowercase
-        else if (confirmCharacter && confirmNumber && confirmLowercase) {
-            choices = character.concat(number, alpha);
-        }
-        //If user selectss only charactes ,uppeercase and lowercase
-        else if (confirmCharacter && confirmLowercase && confirmUppercase) {
-            choices = character.concat(alpha, alpha2);
-        }
-        //If user selectss only number ,uppeercase and lowercase
-        else if (confirmNumber && confirmLowercase && confirmUppercase) {
-            choices = number.concat(alpha, alpha2); 
-        }
-        //If user selectss only number ,chanracter 
-        else if (confirmCharacter && confirmNumber) {
-            choices = character.concat(number);
-        }
-        //If user selectss only lowercase ,chanracter 
-        else if (confirmCharacter && confirmLowercase) {
-            choices = character.concat(alpha);
-        } 
-        //If user selectss only upprcase ,chanracter 
-        else if (confirmCharacter && confirmUppercase) {
-            choices = character.concat(alpha2);
-        }
-        //If user selectss only number ,lowercase 
-        else if (confirmLowercase && confirmNumber) {
-            choices = alpha.concat(number);
-        } 
-        //If user selectss only lowercase ,uppercase 
-        else if (confirmLowercase && confirmUppercase) {
-            choices = alpha.concat(alpha2);
-        } 
-        //If user selectss only number ,uppercase 
-        else if (confirmNumber && confirmUppercase) {
-            choices = number.concat(alpha2);
-        }
-
-        //If user selectss only chanracter 
-        else if (confirmCharacter) {
-            choices = character;
-        }
-        //If user selectss only number 
-        else if (confirmNumber) {
-            choices = number;
-        }
-        //If user selectss only lowercase 
-        else if (confirmLowercase) {
-            choices = alpha;
-        }
-        //If user selectss only uppercase. Created an empty array to push uppercase characters.  
-        else if (confirmUppercase) {
-            choices = space.concat(alpha2);
-        };
-        // empty array to push the user choices
-        var password = [];
-
-        //for loop to iterate through the array.
-        for(var i=0; i<enter ; i++){
-            var userChoice = choices [math.floor(math.random()*choices.length)];
-            password.push(userChoice);
-        };
-
-
-
-
-
-    </script>
+    <div id="wrapper">
+        <header>
+            <h1>Password Generator</h1>
+        </header>
+        <!--This is the content area-->
+        <div id="content">
+            <h2>Generate a Password</h2>
+            <hr>
+            <!-- This is a readonly text area for output-->
+            <textarea readonly id="password" placeholder="Your Secure Password"
+                aria-label="Generated Password"></textarea>
+            <hr>
+            <!-- This is the div for the buttons -->
+            <div id="btn">
+                <!-- This is the generate password button -->
+                <button id="generate">Generate
+                    Password</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
